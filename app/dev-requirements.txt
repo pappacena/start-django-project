@@ -4,3 +4,4 @@ freezegun
 coverage
 ipdb
 pytest
+inotify

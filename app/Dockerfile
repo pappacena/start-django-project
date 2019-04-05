@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3
 
 # wait-for-it script
 ADD ./wait-for-it.sh /usr/bin/wait-for-it.sh
