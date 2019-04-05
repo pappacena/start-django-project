@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+    app:
+        build: ./app
+        command: python manage.py runserver 0:8002
+        volumes:
+            - ./app:/usr/src/app
+        environment:
+            # pytest should be used only for unit tests
+            PYTEST_ADDOPTS: "-k 'not integration'"
+            DEBUG: "true"
+            DB_NAME: "==main-app-name=="
+            DB_USER: "src"
+            DB_PASS: "123456"
+            DB_HOST: "main_db"
+        ports:
+            - "8002:8002"
+    main_db:
+      image: postgres:11
+      environment:
+        POSTGRES_PASSWORD: 123456
+        POSTGRES_USER: src
+        POSTGRES_DB: ==main-app-name==
